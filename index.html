@@ -1,114 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boa Noite, Clarinhaa ✨</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to top, #0a0a0a, #1c1c2b, #2a2a3d);
-      color: #f5f5f5;
-      font-family: "Segoe UI", sans-serif;
-      overflow: hidden;
-      flex-direction: column;
-      gap: 16px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      animation: fadeIn 2s ease forwards;
-    }
-    p {
-      text-align: center;
-      font-size: 1.2rem;
-      opacity: 0.85;
-      margin-top: 12px;
-      animation: fadeIn 4s ease forwards;
-    }
-    button {
-      margin-top: 10px;
-      padding: 10px 18px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f5f5f5;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-    }
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 3s infinite alternate;
-    }
-    @keyframes twinkle {
-      from { opacity: 0.2; transform: scale(1); }
-      to { opacity: 1; transform: scale(1.4); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Boa noitee Clarinha ✨</title>
+<style>
+  body {
+    margin:0; height:100vh; display:flex; justify-content:center; align-items:center;
+    color:#f5f5f5; font-family:"Segoe UI", sans-serif; overflow:hidden; flex-direction:column; gap:16px;
+    background: linear-gradient(to bottom, #0d0d1a, #000);
+    transition: background 2s linear;
+  }
+  h1 { font-size:2.8rem; text-align:center; animation:fadeIn 2s ease forwards; transition:all 0.5s;}
+  #frase { text-align:center; font-size:1.3rem; opacity:0.95; min-height:2.2rem; cursor:pointer; }
+  #relogio { text-align:center; font-size:1rem; opacity:0.7; margin-top:6px; font-family:'Courier New', monospace;}
+  button { margin-top:12px; padding:10px 20px; font-size:1rem; border:none; border-radius:20px;
+    background: rgba(255,255,255,0.15); color:#f5f5f5; cursor:pointer; backdrop-filter: blur(4px); transition: all 0.3s ease;}
+  button:hover { background: rgba(255,255,255,0.25); transform:scale(1.05); box-shadow:0 0 20px rgba(0,255,255,0.4);}
+  .stars, .comet, .particles, .nebulas, .hearts, .techLines, .interactiveParticles { position:absolute; width:100%; height:100%; top:0; left:0; overflow:hidden;}
+  .star { position:absolute; width:2px; height:2px; background:white; border-radius:50%; animation:twinkle 3s infinite alternate; }
+  .particle { position:absolute; width:1px; height:1px; background:#0ff; opacity:0.4; border-radius:50%; animation:fall 10s linear infinite; mix-blend-mode:screen;}
+  .comet { position:absolute; width:120px; height:2px; background:linear-gradient(90deg, #0ff, transparent); opacity:0; transform:rotate(20deg);}
+  .nebulas { position:absolute; width:200%; height:200%; background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08), transparent 70%); animation:moveNebula 60s linear infinite; mix-blend-mode:screen;}
+  .heart { position:absolute; width:6px; height:6px; background:pink; opacity:0.7; border-radius:50%; animation:heartFall 8s linear infinite; }
+  .line { position:absolute; width:2px; height:100%; background:rgba(0,255,255,0.1); animation:linePulse 3s ease-in-out infinite; }
+  .interactiveParticle { position:absolute; width:2px; height:2px; border-radius:50%; background:#0ff; opacity:0.7; pointer-events:none; mix-blend-mode:screen; }
+  @keyframes twinkle { from{opacity:0.2; transform:scale(0.8);} to{opacity:1; transform:scale(1.5);} }
+  @keyframes fall {0%{transform:translateY(-5px);opacity:0;}10%{opacity:0.5;}100%{transform:translateY(110vh);opacity:0;} }
+  @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes shoot {0%{transform:translate(-10%,-10%) rotate(20deg);opacity:1;}100%{transform:translate(120%,120%) rotate(20deg);opacity:0;} }
+  @keyframes moveNebula { 0%{transform:translate(0,0);}50%{transform:translate(-10%,5%);}100%{transform:translate(0,0);} }
+  @keyframes heartFall {0%{transform:translateY(-5px);opacity:0;}10%{opacity:0.8;}100%{transform:translateY(110vh);opacity:0;} }
+  @keyframes linePulse { 0%,100% {opacity:0.1;} 50% {opacity:0.4;} }
+</style>
 </head>
 <body>
   <div class="stars"></div>
+  <div class="comet" id="comet"></div>
+  <div class="particles"></div>
+  <div class="nebulas"></div>
+  <div class="hearts"></div>
+  <div class="techLines"></div>
+  <div class="interactiveParticles"></div>
+
   <div>
-    <h1>Boa noite, Ana 🌙</h1>
-    <p id="frase"></p>
-    <button onclick="tocarMusica()">🎶 Tocar música</button>
+    <h1>Boa noite, Clarinha 🌙</h1>
+    <p id="frase" onclick="novaFrase()"></p>
+    <div id="relogio"></div>
+    <button onclick="novaFrase()">💫 Boa noite De novo flor</button>
+    <button onclick="tocarMusica()">🎶 Play/Pause música</button>
   </div>
 
-  <audio id="musica" src="Musica.mp3"></audio>
+  <audio id="musica" src="musica.mp3"></audio>
 
   <script>
-    const frases = [
-      "Que seus sonhos sejam leves como as estrelas desta noite.",
-      "Amanhã já te espera, mas hoje é hora de descansar o coração.",
-      "Mesmo no silêncio da noite, o universo sorri pra você.",
-      "O descanso é o segredo que faz o amanhã florescer.",
-      "Boa noite, Ana o mundo se acalma só pra te ver sonhar."
-    ];
-    document.getElementById("frase").innerText =
-      frases[Math.floor(Math.random() * frases.length)];
+    // frases
+    const frases=["Que seus sonhos sejam leves como o brilho das estrelas.","A noite guarda segredos que só o silêncio revela.","Mesmo na escuridão, você é a luz mais bonita que existe.","O amanhã floresce quando o coração descansa em paz.","Boa noite, Clarinha o mundo se acalma só pra ver você sonhar."];
+    const fraseEl=document.getElementById("frase"); let fraseAtual=0;
+    function escreverTexto(texto){ fraseEl.innerHTML=""; let i=0; const efeito=setInterval(()=>{fraseEl.innerHTML+=texto.charAt(i); i++; if(i>=texto.length) clearInterval(efeito);},60);}
+    function novaFrase(){ fraseAtual=(fraseAtual+1)%frases.length; escreverTexto(frases[fraseAtual]); }
+    escreverTexto(frases[0]);
 
-    // estrelas aleatórias
-    const stars = document.querySelector(".stars");
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      star.style.top = Math.random() * 100 + "%";
-      star.style.left = Math.random() * 100 + "%";
-      star.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      stars.appendChild(star);
-    }
+    // estrelas
+    const stars=document.querySelector(".stars");
+    for(let i=0;i<100;i++){ const star=document.createElement("div"); star.classList.add("star"); star.style.top=Math.random()*100+"%"; star.style.left=Math.random()*100+"%"; star.style.animationDuration=(Math.random()*3+2)+"s"; stars.appendChild(star); }
 
-    // tocar música
-    function tocarMusica() {
-      const audio = document.getElementById("musica");
-      audio.play();
+    // partículas
+    const particles=document.querySelector(".particles");
+    for(let i=0;i<50;i++){ const p=document.createElement("div"); p.classList.add("particle"); p.style.left=Math.random()*100+"%"; p.style.animationDelay=(Math.random()*10)+"s"; p.style.width=(Math.random()*2+1)+"px"; p.style.height=p.style.width; particles.appendChild(p); }
+
+    // corações
+    const hearts=document.querySelector(".hearts");
+    for(let i=0;i<20;i++){ const h=document.createElement("div"); h.classList.add("heart"); h.style.left=Math.random()*100+"%"; h.style.animationDelay=(Math.random()*15)+"s"; hearts.appendChild(h); }
+
+    // linhas tecnológicas
+    const techLines=document.querySelector(".techLines");
+    for(let i=0;i<20;i++){ const l=document.createElement("div"); l.classList.add("line"); l.style.left=Math.random()*100+"%"; l.style.height=(Math.random()*100)+"px"; techLines.appendChild(l); }
+
+    // partículas interativas
+    const interactive=document.querySelector(".interactiveParticles");
+    const interParticles=[];
+    for(let i=0;i<50;i++){ const ip=document.createElement("div"); ip.classList.add("interactiveParticle"); ip.style.left=Math.random()*100+"%"; ip.style.top=Math.random()*100+"%"; interactive.appendChild(ip); interParticles.push(ip); }
+
+    // música
+    function tocarMusica(){ const audio=document.getElementById("musica"); if(audio.paused) audio.play(); else audio.pause(); }
+
+    // cometa aleatório
+    function cometa(){ const c=document.getElementById("comet"); c.style.top=Math.random()*50+"%"; c.style.left="-150px"; c.style.animation="shoot 2s linear"; setTimeout(()=>c.style.animation="none",2000);}
+    setInterval(cometa,10000);
+
+    // relógio e saudação + fundo dinâmico
+    function atualizarRelogio(){
+      const agora=new Date();
+      const sp=new Date(agora.toLocaleString("en-US",{timeZone:"America/Sao_Paulo"}));
+      let h=sp.getHours();
+      let m=sp.getMinutes().toString().padStart(2,"0");
+      let s=sp.getSeconds().toString().padStart(2,"0");
+      document.getElementById("relogio").innerText=`${h.toString().padStart(2,"0")}:${m}:${s}`;
+
+      const saudacaoEl=document.querySelector("h1");
+      if(h>=5 && h<12){ saudacaoEl.innerText=`Bom dia, Clarinha 🌞`; document.body.style.background='linear-gradient(to bottom, #87ceeb, #0d0d1a)'; }
+      else if(h>=12 && h<18){ saudacaoEl.innerText=`Boa tarde, Clarinha 🌤️`; document.body.style.background='linear-gradient(to bottom, #f0e68c, #0d0d1a)'; }
+      else{ saudacaoEl.innerText=`Boa noite, Clarinha 🌙`; document.body.style.background='linear-gradient(to bottom, #0d0d1a, #000)'; }
     }
+    setInterval(atualizarRelogio,1000);
+    atualizarRelogio();
+
+    // interatividade mouse
+    document.addEventListener("mousemove",(e)=>{
+      stars.childNodes.forEach(star=>{
+        const rect=star.getBoundingClientRect();
+        const dx=e.clientX-(rect.left+1); const dy=e.clientY-(rect.top+1);
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<100){ star.style.transform="scale(2)"; star.style.opacity="1"; } else { star.style.transform="scale(1)"; star.style.opacity="0.8"; }
+      });
+      interParticles.forEach(ip=>{
+        ip.style.left = e.clientX + (Math.random()*50-25) + "px";
+        ip.style.top = e.clientY + (Math.random()*50-25) + "px";
+      });
+    });
   </script>
 </body>
 </html>
-
