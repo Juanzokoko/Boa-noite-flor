@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boa Noite, Ana ✨</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, #0a0a0a, #1c1c2b, #2a2a3d);
+      color: #f5f5f5;
+      font-family: "Segoe UI", sans-serif;
+      overflow: hidden;
+      flex-direction: column;
+      gap: 16px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      margin-top: 12px;
+      animation: fadeIn 4s ease forwards;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f5f5f5;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.4); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div>
+    <h1>Boa noite, Ana 🌙</h1>
+    <p id="frase"></p>
+    <button onclick="tocarMusica()">🎶 Tocar música</button>
+  </div>
+
+  <audio id="musica" src="Musica.mp3"></audio>
+
+  <script>
+    const frases = [
+      "Que seus sonhos sejam leves como as estrelas desta noite.",
+      "Amanhã já te espera, mas hoje é hora de descansar o coração.",
+      "Mesmo no silêncio da noite, o universo sorri pra você.",
+      "O descanso é o segredo que faz o amanhã florescer.",
+      "Boa noite, Ana o mundo se acalma só pra te ver sonhar."
+    ];
+    document.getElementById("frase").innerText =
+      frases[Math.floor(Math.random() * frases.length)];
+
+    // estrelas aleatórias
+    const stars = document.querySelector(".stars");
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      stars.appendChild(star);
+    }
+
+    // tocar música
+    function tocarMusica() {
+      const audio = document.getElementById("musica");
+      audio.play();
+    }
+  </script>
+</body>
+</html>
